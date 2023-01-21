@@ -32,6 +32,7 @@ const  App = () => {
             mode: `${darkMode ? 'dark' : 'light'}`,
         },
     });
+    const [flag, setFlag] = useState<boolean>(false)
 
 
   return (

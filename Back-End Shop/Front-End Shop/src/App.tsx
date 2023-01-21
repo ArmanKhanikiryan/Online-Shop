@@ -1,7 +1,5 @@
-<<<<<<< HEAD
+
 import React, {useState} from 'react';
-=======
->>>>>>> 38c9d76a67a91a4e9be7b02b1cf097f80c27de87
 import './App.css';
 import {Button, TextField} from '@mui/material'
 import ResponsiveAppBar from "./AppBar";
@@ -39,7 +37,6 @@ const  App = () => {
 
   return (
     <div className="App">
-<<<<<<< HEAD
         <button onClick={() => setDarkMode(!darkMode)}>Toggle Mode</button>
         <ThemeProvider theme={darkTheme}>
             <CssBaseline />
@@ -53,11 +50,9 @@ const  App = () => {
         <TextField id="filled-basic" label="Filled" variant="filled" />
         <TextField id="standard-basic" label="Standard" variant="standard" />
 
-=======
 <h1>
   Albert
 </h1>
->>>>>>> 38c9d76a67a91a4e9be7b02b1cf097f80c27de87
     </div>
   );
 }

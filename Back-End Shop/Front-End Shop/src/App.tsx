@@ -37,22 +37,20 @@ const  App = () => {
 
   return (
     <div className="App">
-        <button onClick={() => setDarkMode(!darkMode)}>Toggle Mode</button>
-        <ThemeProvider theme={darkTheme}>
-            <CssBaseline />
-            <main>This app is using the dark mode</main>
-        </ThemeProvider>
-        <ResponsiveAppBar/>
-      <Button color='primary' variant="text">Text</Button>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
-        <TextField color={'primary'} id="outlined-basic" label="Outlined" variant="outlined" />
-        <TextField id="filled-basic" label="Filled" variant="filled" />
-        <TextField id="standard-basic" label="Standard" variant="standard" />
+      {/*  <button onClick={() => setDarkMode(!darkMode)}>Toggle Mode</button>*/}
+      {/*  <ThemeProvider theme={darkTheme}>*/}
+      {/*      <CssBaseline />*/}
+      {/*      <main>This app is using the dark mode</main>*/}
+      {/*  </ThemeProvider>*/}
+      {/*  */}
+      {/*<Button color='primary' variant="text">Text</Button>*/}
+      {/*<Button variant="contained">Contained</Button>*/}
+      {/*<Button variant="outlined">Outlined</Button>*/}
+      {/*  <TextField color={'primary'} id="outlined-basic" label="Outlined" variant="outlined" />*/}
+      {/*  <TextField id="filled-basic" label="Filled" variant="filled" />*/}
+      {/*  <TextField id="standard-basic" label="Standard" variant="standard" />*/}
 
-<h1>
-  Albert
-</h1>
+        <ResponsiveAppBar/>
     </div>
   );
 }

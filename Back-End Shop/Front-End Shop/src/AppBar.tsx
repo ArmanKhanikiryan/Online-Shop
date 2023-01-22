@@ -12,22 +12,11 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { createTheme } from '@mui/material/styles';
-import { purple } from '@mui/material/colors';
+import {useNavigate} from "react-router";
 
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: purple[500],
-        },
-        secondary: {
-            main: '#f44336',
-        },
-    },
-});
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ["Products", "Pricing", "About Us"];
+const settings = ["Profile", "Account", "Logout"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -51,20 +40,28 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const navigate = useNavigate()
+
+    const handleRedirect = (route: string) => {
+      let link = route.toLowerCase()
+        link = link.split(' ').join('')
+        navigate(`/${link}`)
+    }
 
   return (
-    <AppBar position="static">
+    <AppBar sx={{ backgroundColor: "green" }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
+            onClick={() => navigate("/")}
             variant="h6"
             noWrap
             component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
+              cursor: "pointer",
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
@@ -73,7 +70,7 @@ function ResponsiveAppBar() {
             }}
           >
             ArmAb Co
-          </Typography >
+          </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -134,7 +131,11 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => {
+                    console.log(page)
+                  handleRedirect(page);
+                  handleCloseNavMenu();
+                }}
                 sx={{ my: 2, color: "white", display: "block" }} //App Bar text color
               >
                 {page}
@@ -143,7 +144,7 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip sx={{color:'red'}} title="Open settings">
+            <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
@@ -164,11 +165,19 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {settings.map((setting) => {
+                return (
+                  <MenuItem
+                    key={setting}
+                    onClick={() => {
+                      handleCloseUserMenu();
+                      handleRedirect(setting);
+                    }}
+                  >
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                );
+              })}
             </Menu>
           </Box>
         </Toolbar>

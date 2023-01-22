@@ -17,6 +17,7 @@ import {useNavigate} from "react-router";
 
 const pages = ["Products", "Pricing", "About Us"];
 const settings = ["Profile", "Account", "Logout"];
+const settingNotLogin = ["Login", "Registration", "MyCart"]
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -165,7 +166,7 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => {
+              {settingNotLogin.map((setting) => {
                 return (
                   <MenuItem
                     key={setting}
